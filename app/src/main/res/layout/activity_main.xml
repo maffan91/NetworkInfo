@@ -11,7 +11,70 @@
     tools:context="com.affan.app.networkinfo.MainActivity">
 
     <TextView
+        android:text="@string/wifi_name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_marginTop="38dp"
+        android:id="@+id/network_name_lable"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/ip_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/ip_label"
+        android:textSize="24sp"
+        android:layout_below="@+id/network_name_lable"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/imei_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:id="@+id/imei_label"
+        android:textSize="24sp"
+        android:layout_below="@+id/mac_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/mac_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:id="@+id/mac_label"
+        android:textSize="24sp"
+        android:layout_below="@+id/ip_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/refresh_button_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/refreshButton"
+        android:layout_alignBaseline="@+id/copyClipboardButton"
+        android:layout_alignBottom="@+id/copyClipboardButton"
+        android:layout_toRightOf="@+id/copyClipboardButton"
+        android:layout_toEndOf="@+id/copyClipboardButton"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp" />
+
+    <Button
+        android:text="@string/copy_button_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:id="@+id/copyClipboardButton"
+        android:layout_below="@+id/imei_label"
+        android:layout_toRightOf="@+id/ip_label"
+        android:layout_toEndOf="@+id/ip_label"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp" />
 </RelativeLayout>
