@@ -2,6 +2,7 @@ package com.affan.app.networkinfo;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import es.dmoral.toasty.Toasty;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,14 +27,22 @@ public class MainActivity extends AppCompatActivity {
     WifiManager wifiManager;
     WifiInfo wifiInfo;
     ConnectivityManager connectivityManager;
+    NetworkInfo networkInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initComponents();
-        getNetworkInfo();
+        if(connectToInternet()){
+            getNetworkInfo();
+            Toasty.success(this,"Success!",Toast.LENGTH_SHORT).show();
+        }else {
+
+            Toasty.error(this,"No Network Available", Toast.LENGTH_SHORT).show();
+        }
+
+
 
     }
 
@@ -44,8 +56,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void initComponents(){
-
+    public boolean connectToInternet(){
 
         networkName = (TextView) findViewById(R.id.network_name_lable);
         mac = (TextView) findViewById(R.id.mac_label);
@@ -58,8 +69,12 @@ public class MainActivity extends AppCompatActivity {
         wifiManager = (WifiManager) this
                 .getSystemService(Context.WIFI_SERVICE);
 
+        networkInfo = connectivityManager.getActiveNetworkInfo();
         wifiInfo = wifiManager.getConnectionInfo();
 
+        return networkInfo !=null && networkInfo.isConnectedOrConnecting();
 
     }
+
+
 }
